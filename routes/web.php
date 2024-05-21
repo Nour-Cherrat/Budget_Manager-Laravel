@@ -32,4 +32,5 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 /************************ Tags ************************/
 Route::get('/tag', [TagController::class, 'index'])->name('tag.index')->middleware('auth');
 Route::post('/tag/add', [TagController::class, 'create'])->name('tag.create')->middleware('auth');
+Route::post('/tag/update', [TagController::class, 'update'])->name('tag.update')->middleware('auth');
 

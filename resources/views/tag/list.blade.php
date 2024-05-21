@@ -168,7 +168,49 @@
             </div>
         </div>
     </div>
-    <!-- /Add Paiement Modal -->
+    <!-- /Add Tag Modal -->
+
+    <!-- Edit Tag Modal -->
+    @foreach($tags as $tag)
+        <div id="edit_tag{{ $tag->id }}" class="modal custom-modal fade" role="dialog"
+             aria-labelledby="edit_tagLabel{{ $tag->id }}">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="edit_tagLabel{{ $tag->id }}">Edit Tag</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="{{ route('tag.update') }}">
+                            @csrf
+                            <div class="row">
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="hidden" name="id" value="{{ $tag->id }}">
+                                        <label class="col-form-label">Name <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="name"
+                                               value="{{ $tag->name }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Color</label>
+                                        <input class="form-control" type="text" name="color"
+                                               value="{{ $tag->color }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit-section">
+                                <button class="btn btn-primary submit-btn">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    <!-- /Edit Tag Modal -->
 
 
 
