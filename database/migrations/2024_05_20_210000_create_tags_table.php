@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
-            $table->char('color', 6);
+            $table->char('color', 6)->default('e5088e');
             $table->timestamps();
         });
     }
