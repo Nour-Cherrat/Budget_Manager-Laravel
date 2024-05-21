@@ -14,4 +14,21 @@ class TagController extends Controller
         return view('tag.list', ['tags' => $tags]);
     }
 
+    /**
+     * Add a new tag
+     */
+    public function create(Request $request)
+    {
+        $tag = new Tag();
+
+        $tag->user_id = $request->user_id;
+        $tag->name = $request->name;
+        if($request->color) {
+            $tag->color = $request->color;
+        }
+
+        $tag->save();
+        return redirect()->back();
+    }
+
 }
